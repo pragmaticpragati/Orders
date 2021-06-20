@@ -6,7 +6,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-
 </form>
 <?php    
 $dbhost = 'localhost';         
@@ -25,7 +24,7 @@ echo "CUSTOMER"."<br>"."<br>";
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      echo "customer_no: " . $row["customer_no"]."<br>"."    caddress:".$row["caddress"]. "<br>"."    cname:" . $row["cname"]. "<br>"."<br>";
+      echo "    cname:" . $row["cname"]. "<br>"."<br>";
     }
   } else {
     echo "0 results";
@@ -35,20 +34,33 @@ if ($result->num_rows > 0) {
 
 // Q2
 
-
     print("<form method=\"post\" action=\"$_SERVER[PHP_SELF]\">");
     print("Enter customer number: <input type=\"text\" name=\"customer_no\">");
     print("<br/>");
     print("<input type=\"submit\" value=\"Submit number\">");
     print("</form>");
-  
+    
     if ($_POST['customer_no'])
     {
         $id = $_POST['customer_no'];
+    
+    $stmt = $conn->prepare("SELECT * FROM CUSTOMER WHERE customer_no = ?"); 
+    
+
+    $ok = $stmt->bind_param( "i", $id);  
+    if (!$ok) 
+    { 
+        die("Bind param error"); 
     }
-  
-    $sql = "SELECT * FROM CUSTOMER";
-    $result = $conn->query($sql);
+      $ok=$stmt->execute();  
+    if (!$ok) 
+    { 
+        die("Exec error"); 
+    }  
+    $result = $stmt->get_result();
+
+
+  }
 
 while($row = $result->fetch_assoc()) {
     if ($row["customer_no"] == $id) {
@@ -62,3 +74,4 @@ while($row = $result->fetch_assoc()) {
 ?>
 </body>
 </html>
+
