@@ -5,73 +5,39 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-</form>
-<?php    
-$dbhost = 'localhost';         
-$dbuser = 'root';         
-$dbpass = 'root';         
-$dbname = 'Orders';         
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);         
-if(! $conn ) {            
-die('Could not connect: ' . mysqli_error());         
-}
+</head>
+<body>
 
-$sql = "SELECT customer_no, caddress, cname FROM CUSTOMER";
-$result = $conn->query($sql);
-
-echo "CUSTOMER"."<br>"."<br>";
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      echo "    cname:" . $row["cname"]. "<br>"."<br>";
-    }
-  } else {
-    echo "0 results";
-  }
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Clothing Store</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Orders</a></li>
+      <li><a href="#">Items</a></li>
+      <li><a href="customer.php">Customers</a></li>
+      <li><a href="#">Purchases</a></li>
+    </ul>
+  </div>
+</nav>
   
- 
+<div class="container">
+  <h3>Application under construction</h3>
+  <p>"Customers" entry works!</p>
+</div>
 
-// Q2
-
-    print("<form method=\"post\" action=\"$_SERVER[PHP_SELF]\">");
-    print("Enter customer number: <input type=\"text\" name=\"customer_no\">");
-    print("<br/>");
-    print("<input type=\"submit\" value=\"Submit number\">");
-    print("</form>");
-    
-    if ($_POST['customer_no'])
-    {
-        $id = $_POST['customer_no'];
-    
-    $stmt = $conn->prepare("SELECT * FROM CUSTOMER WHERE customer_no = ?"); 
-    
-
-    $ok = $stmt->bind_param( "i", $id);  
-    if (!$ok) 
-    { 
-        die("Bind param error"); 
-    }
-      $ok=$stmt->execute();  
-    if (!$ok) 
-    { 
-        die("Exec error"); 
-    }  
-    $result = $stmt->get_result();
-
-
-  }
-
-while($row = $result->fetch_assoc()) {
-    if ($row["customer_no"] == $id) {
-         echo "cname: " . $row["cname"]. "<br>\n";
-         echo "caddress: " . $row["caddress"]. "<br>\n";
-         echo "customer_no " . $row["customer_no"]. "<br>\n";
-         
-    }
-  }
-  $conn->close();
-?>
 </body>
 </html>
 
