@@ -1,15 +1,6 @@
 
 <?php
-
-$dbhost = 'localhost';         
-$dbuser = 'root';         
-$dbpass = 'root';         
-$dbname = 'Orders';         
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);         
-if(! $conn ) 
-{            
-die('Could not connect: ' . mysqli_error());         
-}
+include 'file.php';
 ?>
 <html>   
 <head>   
@@ -38,7 +29,7 @@ die('Could not connect: ' . mysqli_error());
     <ul class="nav navbar-nav">
       
       
-      <li><a href="items.php">Items</a></li>
+      <li><a href="index.php">Items</a></li>
       <li><a href="orders.php">Orders</a></li>
       <li><a href="customer.php">Customers</a></li>
       <li><a href="#">Purchases</a></li>
