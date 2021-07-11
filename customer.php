@@ -1,3 +1,16 @@
+
+<?php
+
+$dbhost = 'localhost';         
+$dbuser = 'root';         
+$dbpass = 'root';         
+$dbname = 'Orders';         
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);         
+if(! $conn ) 
+{            
+die('Could not connect: ' . mysqli_error());         
+}
+?>
 <html>   
 <head>   
 
@@ -16,6 +29,25 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Clothing Store</a>
+    </div>
+    <ul class="nav navbar-nav">
+      
+      
+      <li><a href="items.php">Items</a></li>
+      <li><a href="orders.php">Orders</a></li>
+      <li><a href="customer.php">Customers</a></li>
+      <li><a href="#">Purchases</a></li>
+      <li><a href="https://github.com/pragmaticpragati/Orders/wiki">Help</a></li>
+      <li><a href="https://github.com/pragmaticpragati/Orders/blob/main/DatabaseScript.sql">Install Script</a></li>
+    </ul>
+  </div>
+</nav>
+  
 
 <div class="container">
   <h2>Customer Entry Form</h2>
@@ -42,7 +74,7 @@
 <!-- DISPLAY -->
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Customer Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -64,15 +96,7 @@
     </thead>
     <?php
 
-    $dbhost = 'localhost';         
-    $dbuser = 'root';         
-    $dbpass = 'root';         
-    $dbname = 'Orders';         
-    $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);         
-    if(! $conn ) 
-    {            
-    die('Could not connect: ' . mysqli_error());         
-    }
+    
         //JUNE 27TH DATA DISPLAY 
 
         $sql = "SELECT cname, caddress, customer_no from CUSTOMER";
@@ -100,15 +124,7 @@
 
 
 <?php    
-$dbhost = 'localhost';         
-$dbuser = 'root';         
-$dbpass = 'root';         
-$dbname = 'Orders';         
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);         
-if(! $conn ) 
-{            
-die('Could not connect: ' . mysqli_error());         
-}
+
 
 $sql = "SELECT customer_no, caddress, cname FROM CUSTOMER";
 $result = $conn->query($sql);
