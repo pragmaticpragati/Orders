@@ -10,4 +10,4 @@ It keeps track of the customer information, orders, items, and payment.
 4. Download the items.php, customer.php, orders.php, and purchase.php files. 
 5. Go to MAMP>htdocs, create a new folder, and place all the files there. 
 6. Modify the username and password. 
-7. Go to localhost/foldername/file.php to access the application. 
+7. Go to localhost/foldername/items.php to open the main page of the application. 
