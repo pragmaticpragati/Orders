@@ -1,14 +1,5 @@
 <?php
-
-$dbhost = 'localhost';         
-$dbuser = 'root';         
-$dbpass = 'root';         
-$dbname = 'Orders';         
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);         
-if(! $conn ) 
-{            
-die('Could not connect: ' . mysqli_error());         
-}
+include 'file.php';
 ?>
 
 <html>   
@@ -39,7 +30,7 @@ die('Could not connect: ' . mysqli_error());
     <ul class="nav navbar-nav">
       
       
-      <li><a href="items.php">Items</a></li>
+      <li><a href="index.php">Items</a></li>
       <li><a href="orders.php">Orders</a></li>
       <li><a href="customer.php">Customers</a></li>
       <li><a href="purchase.php">Purchases</a></li>
@@ -51,7 +42,7 @@ die('Could not connect: ' . mysqli_error());
   
 <div class="container">
   <h2>Items Entry Form</h2>
-  <form action="items.php" method= "post">
+  <form action="index.php" method= "post">
     <div class="form-group">
       <label for="item_price">Item Price</label>
       <input type="int" class="form-control" id="item_price" placeholder="Text of 0-20 characters" name="item_price">
