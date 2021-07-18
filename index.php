@@ -45,26 +45,26 @@ include 'file.php';
   <form action="index.php" method= "post">
     <div class="form-group">
       <label for="item_price">Item Price</label>
-      <input type="int" class="form-control" id="item_price" placeholder="Text of 0-20 characters" name="item_price">
+      <input type="int" class="form-control" id="item_price" placeholder="Enter price" name="item_price">
     </div>
     <div class="form-group">
       <label for="item_des">Item Description </label>
-      <input type="text" class="form-control" id="item_des" placeholder="Text of 0-20 characters" name="item_des">
+      <input type="text" class="form-control" id="item_des" placeholder="Enter item description" name="item_des">
     </div>
 
     <div class="form-group">
       <label for="sell_count">Sell Count</label>
-      <input type="int" class="form-control" id="sell_count" placeholder="Integer between 0-30 digits" name="sell_count">
+      <input type="int" class="form-control" id="sell_count" placeholder="Enter sell count" name="sell_count">
     </div>
 
     <div class="form-group">
       <label for="quantity">Quantity</label>
-      <input type="int" class="form-control" id="quantity" placeholder="Integer between 0-30 digits" name="quantity">
+      <input type="int" class="form-control" id="quantity" placeholder="Enter quantity" name="quantity">
     </div>
 
     <div class="form-group">
       <label for="item_code">Item Code</label>
-      <input type="text" class="form-control" id="item_code" placeholder="Integer between 0-30 digits" name="item_code">
+      <input type="text" class="form-control" id="item_code" placeholder="Enter item code" name="item_code">
     </div>
 
 
@@ -120,7 +120,7 @@ include 'file.php';
     ?>
 
 <?php    
-
+include 'file.php';
 $sql = "SELECT item_price, item_des, sell_count, quantity, item_code from ITEM";
 $result = $conn->query($sql);
 
@@ -142,7 +142,9 @@ $result = $conn->query($sql);
  
          if($run)
          {
-             echo "Data added successfully";
+          echo "Data added successfully!";
+          echo " To see the updated values, go to ORDERS and come back to this page. "; 
+          echo " * do not refresh after entering values *  ";     
          }
          else 
          {
