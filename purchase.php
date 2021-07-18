@@ -1,14 +1,5 @@
 <?php
-
-$dbhost = 'localhost';         
-$dbuser = 'root';         
-$dbpass = 'root';         
-$dbname = 'Orders';         
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);         
-if(! $conn ) 
-{            
-die('Could not connect: ' . mysqli_error());         
-}
+include 'file.php';
 ?>
 
 <html>   
@@ -19,15 +10,7 @@ die('Could not connect: ' . mysqli_error());
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
 
-$dbhost = 'localhost';         
-$dbuser = 'root';         
-$dbpass = 'root';         
-$dbname = 'Orders';         
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);         
-if(! $conn ) 
-{            
-die('Could not connect: ' . mysqli_error());         
-}?>
+?>
 
 </form>
 
@@ -49,7 +32,7 @@ die('Could not connect: ' . mysqli_error());
     <ul class="nav navbar-nav">
      
       
-      <li><a href="items.php">Items</a></li>
+      <li><a href="index.php">Items</a></li>
       <li><a href="orders.php">Orders</a></li>
       <li><a href="customer.php">Customers</a></li>
       <li><a href="purchase.php">Purchases</a></li>
@@ -60,30 +43,30 @@ die('Could not connect: ' . mysqli_error());
 </nav>
   
 <div class="container">
-  <h2>Items Entry Form</h2>
+  <h2>Purchase Entry Form</h2>
   <form action="purchase.php" method= "post">
     <div class="form-group">
       <label for="net_price">Net Price</label>
-      <input type="int" class="form-control" id="net_price" placeholder="Text of 0-20 characters" name="net_price">
+      <input type="int" class="form-control" id="net_price" placeholder="Enter net price" name="net_price">
     </div>
     <div class="form-group">
-      <label for="c_no">Item Description </label>
-      <input type="text" class="form-control" id="c_no" placeholder="Text of 0-20 characters" name="c_no">
+      <label for="c_no">Customer Number </label>
+      <input type="text" class="form-control" id="c_no" placeholder="Customer Number" name="c_no">
     </div>
 
     <div class="form-group">
       <label for="payment_state">Payment State</label>
-      <input type="int" class="form-control" id="payment_state" placeholder="Integer between 0-30 digits" name="payment_state">
+      <input type="int" class="form-control" id="payment_state" placeholder="Enter payment state" name="payment_state">
     </div>
 
     <div class="form-group">
       <label for="o_date">Order Date</label>
-      <input type="int" class="form-control" id="o_date" placeholder="Integer between 0-30 digits" name="o_date">
+      <input type="date" class="form-control" id="o_date" placeholder="Enter date" name="o_date">
     </div>
 
     <div class="form-group">
       <label for="o_time">Order Time</label>
-      <input type="int" class="form-control" id="o_time" placeholder="Integer between 0-30 digits" name="o_time">
+      <input type="int" class="form-control" id="o_time" placeholder="Enter time" name="o_time">
     </div>
 
 
@@ -140,10 +123,11 @@ die('Could not connect: ' . mysqli_error());
 
 <?php    
 
+
 $sql = "SELECT net_price, c_no, payment_state, o_date, o_time from PURCHASE";
 $result = $conn->query($sql);
 
- 
+include 'file.php';
  //June 27th  FORMS
 
  if(isset($_POST['submit']))
@@ -155,13 +139,16 @@ $result = $conn->query($sql);
          $o_date = $_POST['o_date'];
          $o_time = $_POST['o_time']; 
  
-         $query = "insert into ITEM (net_price, c_no, payment_state, o_date, o_time) values ('$net_price','$c_no','$payment_state','$o_date','$o_time')";
+         $query = "insert into PURCHASE (net_price, c_no, payment_state, o_date, o_time) values ('$net_price','$c_no','$payment_state','$o_date','$o_time')";
  
          $run = mysqli_query($conn, $query) or die (mysqli_error());
  
          if($run)
          {
-             echo "Data added successfully";
+             echo "Data added successfully!";
+             echo " To see the updated values, go to ORDERS and come back to this page. "; 
+             echo " * do not refresh after entering values *  ";     
+             
          }
          else 
          {
