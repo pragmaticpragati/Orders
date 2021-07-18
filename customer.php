@@ -32,7 +32,7 @@ include 'file.php';
       <li><a href="index.php">Items</a></li>
       <li><a href="orders.php">Orders</a></li>
       <li><a href="customer.php">Customers</a></li>
-      <li><a href="#">Purchases</a></li>
+      <li><a href="purchase.php">Purchases</a></li>
       <li><a href="https://github.com/pragmaticpragati/Orders/wiki">Help</a></li>
       <li><a href="https://github.com/pragmaticpragati/Orders/blob/main/DatabaseScript.sql">Install Script</a></li>
     </ul>
@@ -45,15 +45,15 @@ include 'file.php';
   <form action="customer.php" method= "post">
     <div class="form-group">
       <label for="cname">Customer Name:</label>
-      <input type="text" class="form-control" id="cname" placeholder="Text of 0-20 characters" name="cname">
+      <input type="text" class="form-control" id="cname" placeholder="Enter customer name" name="cname">
     </div>
     <div class="form-group">
       <label for="caddress">Customer Address</label>
-      <input type="text" class="form-control" id="caddress" placeholder="Text of 0-20 characters" name="caddress">
+      <input type="text" class="form-control" id="caddress" placeholder="Enter customer address" name="caddress">
     </div>
     <div class="form-group">
       <label for="customer_no">Customer Number</label>
-      <input type="int" class="form-control" id="customer_no" placeholder="Integer between 0-30 digits" name="customer_no">
+      <input type="int" class="form-control" id="customer_no" placeholder="Enter customer number" name="customer_no">
     </div>
 
 
@@ -115,7 +115,7 @@ include 'file.php';
 
 
 <?php    
-
+include 'file.php';
 
 $sql = "SELECT customer_no, caddress, cname FROM CUSTOMER";
 $result = $conn->query($sql);
@@ -136,7 +136,9 @@ $result = $conn->query($sql);
  
          if($run)
          {
-             echo "Data added successfully";
+          echo "Data added successfully!";
+          echo " To see the updated values, go to ORDERS and come back to this page. "; 
+          echo " * do not refresh after entering values *  ";     
          }
          else 
          {
